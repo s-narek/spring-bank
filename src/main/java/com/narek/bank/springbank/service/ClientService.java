@@ -3,5 +3,10 @@ package com.narek.bank.springbank.service;
 import java.math.BigDecimal;
 
 public interface ClientService {
-    BigDecimal getBalance(Long id);
+    /**
+     * Get client balance.
+     * @param clientId id client
+     * @return balance client's
+     */
+    BigDecimal getBalanceClient(Long clientId);
 }

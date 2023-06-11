@@ -6,7 +6,16 @@ import java.math.BigDecimal;
 
 @Data
 public class TransferBalanceDto {
-    private final Long from;
-    private final Long to;
-    private final BigDecimal amount;
+    /**
+     * Who will send money.
+     */
+    private final Long clientTransfersMoney;
+    /**
+     * Who to send money.
+     */
+    private final Long clientReceivesMoney;
+    /**
+     * How much money to send.
+     */
+    private final BigDecimal amountMoney;
 }
