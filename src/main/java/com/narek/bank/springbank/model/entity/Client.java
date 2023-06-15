@@ -7,22 +7,46 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 
 @Entity
 @Data
-@Table(name = "client_balance", schema = "bank")
+@Table(name = "client_information", schema = "bank")
 public class Client {
 
     /**
-     * Id client.
+     * Client's id.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long clientId;
+    private Long id;
 
     /**
-     * Balance client.
+     * Client's name.
      */
-    private BigDecimal balance;
+    private String firstName;
+
+    /**
+     * Client's lastName.
+     */
+    private String lastName;
+
+    /**
+     * Client's age.
+     */
+    private int age;
+
+    /**
+     * Client's address.
+     */
+    private String address;
+
+    /**
+     * Client's phone number.
+     */
+    private String phoneNumber;
+
+    /**
+     * Client's email.
+     */
+    private String email;
 }

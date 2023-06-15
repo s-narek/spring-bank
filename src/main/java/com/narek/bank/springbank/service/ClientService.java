@@ -1,12 +1,12 @@
 package com.narek.bank.springbank.service;
 
-import java.math.BigDecimal;
+import com.narek.bank.springbank.model.entity.Client;
 
 public interface ClientService {
     /**
-     * Get client balance.
-     * @param clientId id client
-     * @return balance client's
+     * Get client's information.
+     * @param id - id of client
+     * @return client's information
      */
-    BigDecimal getBalanceClient(Long clientId);
+    Client getInformation(Long id);
 }
