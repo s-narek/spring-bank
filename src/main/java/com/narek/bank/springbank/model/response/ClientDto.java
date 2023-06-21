@@ -1,26 +1,17 @@
-package com.narek.bank.springbank.model.entity;
+package com.narek.bank.springbank.model.response;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.util.UUID;
 
-@Entity
 @Setter
 @Getter
-@Table(name = "client", schema = "bank")
-public class Client extends Timestamped {
+public class ClientDto {
 
     /**
      * Client's id.
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     /**

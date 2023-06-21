@@ -1,6 +1,8 @@
 package com.narek.bank.springbank.service;
 
-import com.narek.bank.springbank.model.entity.Client;
+import com.narek.bank.springbank.model.response.ClientDto;
+
+import java.util.UUID;
 
 public interface ClientService {
     /**
@@ -8,5 +10,5 @@ public interface ClientService {
      * @param id - id of client
      * @return client's information
      */
-    Client getInformation(Long id);
+    ClientDto get(UUID id);
 }

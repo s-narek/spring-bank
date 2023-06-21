@@ -1,10 +1,14 @@
 package com.narek.bank.springbank.service.impl;
 
-import com.narek.bank.springbank.model.entity.Client;
+import com.narek.bank.springbank.mapper.ClientMapper;
+import com.narek.bank.springbank.model.response.ClientDto;
 import com.narek.bank.springbank.repository.ClientRepository;
 import com.narek.bank.springbank.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -22,12 +26,11 @@ public class ClientServiceImpl implements ClientService {
      * @return client's information
      */
     @Override
-    public Client getInformation(final Long id) {
-        var client = clientRepository.findById(id);
-        if (client.isPresent()) {
-            return client.get();
-        } else {
-            throw new UnsupportedOperationException("Client not found");
-        }
+    @Transactional(readOnly = true)
+    public ClientDto get(final UUID id) {
+        var optionalClient = clientRepository.findById(id);
+        return optionalClient
+                .map(ClientMapper.INSTANCE::map)
+                .orElseThrow(() -> new UnsupportedOperationException("Client not found"));
     }
 }

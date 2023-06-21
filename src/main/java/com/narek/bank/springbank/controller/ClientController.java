@@ -1,12 +1,14 @@
 package com.narek.bank.springbank.controller;
 
-import com.narek.bank.springbank.model.entity.Client;
+import com.narek.bank.springbank.model.response.ClientDto;
 import com.narek.bank.springbank.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,8 +24,8 @@ public final class ClientController {
      * @param id - id clint's.
      * @return client's information.
      */
-    @GetMapping("/clients/{id}/information")
-    public ResponseEntity<Client> getInformationClient(@PathVariable final Long id) {
-        return ResponseEntity.ok(clientService.getInformation(id));
+    @GetMapping("/clients")
+    public ResponseEntity<ClientDto> getClient(@RequestParam final UUID id) {
+        return ResponseEntity.ok(clientService.get(id));
     }
 }
