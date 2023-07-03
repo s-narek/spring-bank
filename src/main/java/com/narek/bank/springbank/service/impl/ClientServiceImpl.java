@@ -1,5 +1,6 @@
 package com.narek.bank.springbank.service.impl;
 
+import com.narek.bank.springbank.exception.NotFoundException;
 import com.narek.bank.springbank.mapper.ClientMapper;
 import com.narek.bank.springbank.model.response.ClientDto;
 import com.narek.bank.springbank.repository.ClientRepository;
@@ -31,6 +32,6 @@ public class ClientServiceImpl implements ClientService {
         var optionalClient = clientRepository.findById(id);
         return optionalClient
                 .map(ClientMapper.INSTANCE::map)
-                .orElseThrow(() -> new UnsupportedOperationException("Client not found"));
+                .orElseThrow(() -> new NotFoundException("Client not found"));
     }
 }

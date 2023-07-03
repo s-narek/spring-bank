@@ -1,46 +1,50 @@
 package com.narek.bank.springbank.model.response;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.jackson.Jacksonized;
 
 import java.util.UUID;
 
-@Setter
-@Getter
+@Data
+@Builder
+@Jacksonized
+@RequiredArgsConstructor
 public class ClientDto {
 
     /**
      * Client's id.
      */
-    private UUID id;
+    private final UUID id;
 
     /**
      * Client's name.
      */
-    private String firstName;
+    private final String firstName;
 
     /**
      * Client's lastName.
      */
-    private String lastName;
+    private final String lastName;
 
     /**
      * Client's age.
      */
-    private int age;
+    private final int age;
 
     /**
      * Client's address.
      */
-    private String address;
+    private final String address;
 
     /**
      * Client's phone number.
      */
-    private String phoneNumber;
+    private final String phoneNumber;
 
     /**
      * Client's email.
      */
-    private String email;
+    private final String email;
 }

@@ -5,7 +5,7 @@ import com.narek.bank.springbank.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -21,11 +21,11 @@ public final class ClientController {
 
     /**
      * Get controller to receive the client's information.
-     * @param id - id clint's.
+     * @param id - client's id.
      * @return client's information.
      */
-    @GetMapping("/clients")
-    public ResponseEntity<ClientDto> getClient(@RequestParam final UUID id) {
+    @GetMapping("/clients/{id}")
+    public ResponseEntity<ClientDto> getClient(@PathVariable final UUID id) {
         return ResponseEntity.ok(clientService.get(id));
     }
 }
