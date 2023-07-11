@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,5 +36,31 @@ public class ClientServiceImpl implements ClientService {
         return optionalClient
                 .map(ClientMapper.INSTANCE::map)
                 .orElseThrow(() -> new NotFoundException(Client.class, id));
+    }
+
+    /**
+     * Get all client's information.
+     * @return all client's information
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public List<ClientDto> getAll() {
+        var optionalClient = clientRepository.findAll();
+        return optionalClient
+                .stream().map(ClientMapper.INSTANCE::map)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Add client's information.
+     * @param clientDto - clientDto
+     * @return clientDto
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public ClientDto put(final ClientDto clientDto) {
+        var client = ClientMapper.INSTANCE.map(clientDto);
+        clientRepository.save(client);
+        return get(client.getId());
     }
 }

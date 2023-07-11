@@ -1,13 +1,19 @@
 package com.narek.bank.springbank.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +27,7 @@ public class Client extends Timestamped {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
 
     /**
@@ -52,4 +59,11 @@ public class Client extends Timestamped {
      * Client's email.
      */
     private String email;
+
+    /**
+     * Client's account.
+     */
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private List<Account> account = new ArrayList<>();
 }

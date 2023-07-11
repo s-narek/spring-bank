@@ -18,4 +18,11 @@ public interface ClientMapper {
      * @return ClientDto
      */
     ClientDto map(Client client);
+
+    /**
+     * Map dto to entity.
+     * @param clientDto - ClientDto
+     * @return client's
+     */
+    Client map(ClientDto clientDto);
 }
