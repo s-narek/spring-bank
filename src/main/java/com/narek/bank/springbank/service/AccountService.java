@@ -1,12 +1,12 @@
 package com.narek.bank.springbank.service;
 
-import com.narek.bank.springbank.model.response.AccountDto;
+import com.narek.bank.springbank.model.entity.Account;
 
 public interface AccountService {
     /**
      * Add client's account.
-     * @param accountDto - accountDto
+     * @param account - account
      * @return accountDto
      */
-    AccountDto put(AccountDto accountDto);
+    Account create(Account account);
 }

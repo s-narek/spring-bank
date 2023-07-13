@@ -39,7 +39,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     /**
-     * Get all client's information.
+     * Get all clients.
      * @return all client's information
      */
     @Override
@@ -53,14 +53,12 @@ public class ClientServiceImpl implements ClientService {
 
     /**
      * Add client's information.
-     * @param clientDto - clientDto
+     * @param client - client
      * @return clientDto
      */
     @Override
     @Transactional(readOnly = true)
-    public ClientDto put(final ClientDto clientDto) {
-        var client = ClientMapper.INSTANCE.map(clientDto);
-        clientRepository.save(client);
-        return get(client.getId());
+    public Client create(final Client client) {
+        return clientRepository.save(client);
     }
 }

@@ -1,6 +1,8 @@
 package com.narek.bank.springbank.controller;
 
+import com.narek.bank.springbank.mapper.ClientMapper;
 import com.narek.bank.springbank.model.response.ClientDto;
+import com.narek.bank.springbank.model.response.CreateClientDto;
 import com.narek.bank.springbank.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,16 +29,16 @@ public final class ClientController {
      * @param id - client's id.
      * @return client's information.
      */
-    @GetMapping("/clients/{id}")
-    public ResponseEntity<ClientDto> getAllClient(@PathVariable final UUID id) {
+    @GetMapping("/client/{id}")
+    public ResponseEntity<ClientDto> getClient(@PathVariable final UUID id) {
         return ResponseEntity.ok(clientService.get(id));
     }
 
     /**
-     * Get controller to receive all client's.
-     * @return All client's
+     * API to return a list of all clients.
+     * @return All clients
      */
-    @GetMapping("/clients")
+    @GetMapping("/client")
     public ResponseEntity<List<ClientDto>> getAllClient() {
         return ResponseEntity.ok(clientService.getAll());
     }
@@ -46,8 +48,10 @@ public final class ClientController {
      * @param clientDto - Client's information
      * @return Client's information
      */
-    @PostMapping("/clients/add")
-    public ResponseEntity<ClientDto> addClient(@RequestBody final ClientDto clientDto) {
-        return ResponseEntity.ok(clientService.put(clientDto));
+    @PostMapping("/client/add")
+    public ResponseEntity<CreateClientDto> addClient(@RequestBody final ClientDto clientDto) {
+        var client = clientService.create(ClientMapper.INSTANCE.map(clientDto));
+        var createClientDto = ClientMapper.INSTANCE.mapClientToCreateClientDto(client);
+        return ResponseEntity.ok(createClientDto);
     }
 }

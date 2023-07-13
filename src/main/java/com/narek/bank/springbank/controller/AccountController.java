@@ -1,6 +1,8 @@
 package com.narek.bank.springbank.controller;
 
+import com.narek.bank.springbank.mapper.AccountMapper;
 import com.narek.bank.springbank.model.response.AccountDto;
+import com.narek.bank.springbank.model.response.CreateAccountDto;
 import com.narek.bank.springbank.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,10 @@ public class AccountController {
      * @param accountDto - client's account
      * @return client's account
      */
-    @PostMapping("/clients/account")
-    public ResponseEntity<AccountDto> put(@RequestBody final AccountDto accountDto) {
-        return ResponseEntity.ok(accountService.put(accountDto));
+    @PostMapping("/account")
+    public ResponseEntity<CreateAccountDto> put(@RequestBody final AccountDto accountDto) {
+        var account = accountService.create(AccountMapper.INSTANCE.map(accountDto));
+        var createAccountDto = AccountMapper.INSTANCE.mapAccountToCreateAccountDto(account);
+        return ResponseEntity.ok(createAccountDto);
     }
 }

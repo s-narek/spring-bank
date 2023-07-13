@@ -1,32 +1,19 @@
 package com.narek.bank.springbank.model.response;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.jackson.Jacksonized;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-@Builder
-@Jacksonized
+@EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
-public class AccountDto {
+public class AccountDto extends BaseAccountDto {
     /**
      * Account id.
      */
     private final UUID id;
-
-    /**
-     * Account number.
-     */
-    private final Long number;
-
-    /**
-     * Account balance.
-     */
-    private final BigDecimal balance;
 
     /**
      * Foreign key.

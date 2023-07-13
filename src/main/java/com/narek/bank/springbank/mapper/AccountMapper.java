@@ -2,6 +2,7 @@ package com.narek.bank.springbank.mapper;
 
 import com.narek.bank.springbank.model.entity.Account;
 import com.narek.bank.springbank.model.response.AccountDto;
+import com.narek.bank.springbank.model.response.CreateAccountDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -25,4 +26,11 @@ public interface AccountMapper {
      * @return client's account
      */
     Account map(AccountDto accountDto);
+
+    /**
+     * Map entity to dto.
+     * @param account - client's account
+     * @return accountDto
+     */
+    CreateAccountDto mapAccountToCreateAccountDto(Account account);
 }

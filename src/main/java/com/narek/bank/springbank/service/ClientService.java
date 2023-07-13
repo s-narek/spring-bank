@@ -1,5 +1,6 @@
 package com.narek.bank.springbank.service;
 
+import com.narek.bank.springbank.model.entity.Client;
 import com.narek.bank.springbank.model.response.ClientDto;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public interface ClientService {
 
     /**
      * Add client's information.
-     * @param clientDto - clientDto
-     * @return clientDto
+     * @param client - client
+     * @return client
      */
-    ClientDto put(ClientDto clientDto);
+    Client create(Client client);
 }

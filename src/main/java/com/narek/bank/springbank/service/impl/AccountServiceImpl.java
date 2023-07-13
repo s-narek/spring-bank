@@ -1,7 +1,6 @@
 package com.narek.bank.springbank.service.impl;
 
-import com.narek.bank.springbank.mapper.AccountMapper;
-import com.narek.bank.springbank.model.response.AccountDto;
+import com.narek.bank.springbank.model.entity.Account;
 import com.narek.bank.springbank.repository.AccountRepository;
 import com.narek.bank.springbank.service.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -23,16 +22,14 @@ public class AccountServiceImpl implements AccountService {
 
     /**
      * Add client's account.
-     * @param accountDto - accountDto
+     * @param account - account
      * @return accountDto
      */
     @Override
     @Transactional
-    public AccountDto put(final AccountDto accountDto) {
-        var account = AccountMapper.INSTANCE.map(accountDto);
+    public Account create(final Account account) {
         var number = (long) (Math.random() * ACCOUNT_NUMBER_LENGTH);
         account.setNumber(number);
-        accountRepository.save(account);
-        return AccountMapper.INSTANCE.map(account);
+        return accountRepository.save(account);
     }
 }

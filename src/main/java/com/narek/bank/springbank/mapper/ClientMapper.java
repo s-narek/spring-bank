@@ -2,6 +2,7 @@ package com.narek.bank.springbank.mapper;
 
 import com.narek.bank.springbank.model.entity.Client;
 import com.narek.bank.springbank.model.response.ClientDto;
+import com.narek.bank.springbank.model.response.CreateClientDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -25,4 +26,11 @@ public interface ClientMapper {
      * @return client's
      */
     Client map(ClientDto clientDto);
+
+    /**
+     * Map entity to dto.
+     * @param client - client's
+     * @return clientDto
+     */
+    CreateClientDto mapClientToCreateClientDto(Client client);
 }
