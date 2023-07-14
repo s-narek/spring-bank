@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor(force = true)
-public class BaseClientDto {
+public abstract class BaseClientDto {
     /**
      * Client's name.
      */

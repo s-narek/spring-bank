@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,5 +20,5 @@ public class ClientDto extends BaseClientDto {
     /**
      * Client's account.
      */
-    private final List<Account> account = new ArrayList<>();
+    private final List<Account> account;
 }

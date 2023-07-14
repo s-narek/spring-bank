@@ -12,7 +12,6 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -65,5 +64,5 @@ public class Client extends Timestamped {
      */
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private List<Account> account = new ArrayList<>();
+    private List<Account> account;
 }

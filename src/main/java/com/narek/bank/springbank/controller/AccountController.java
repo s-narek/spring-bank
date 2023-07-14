@@ -24,7 +24,7 @@ public class AccountController {
      * @return client's account
      */
     @PostMapping("/account")
-    public ResponseEntity<CreateAccountDto> put(@RequestBody final AccountDto accountDto) {
+    public ResponseEntity<CreateAccountDto> create(@RequestBody final AccountDto accountDto) {
         var account = accountService.create(AccountMapper.INSTANCE.map(accountDto));
         var createAccountDto = AccountMapper.INSTANCE.mapAccountToCreateAccountDto(account);
         return ResponseEntity.ok(createAccountDto);

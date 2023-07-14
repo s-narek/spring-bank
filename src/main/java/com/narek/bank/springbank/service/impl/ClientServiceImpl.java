@@ -7,6 +7,7 @@ import com.narek.bank.springbank.model.response.ClientDto;
 import com.narek.bank.springbank.repository.ClientRepository;
 import com.narek.bank.springbank.service.ClientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,12 +41,13 @@ public class ClientServiceImpl implements ClientService {
 
     /**
      * Get all clients.
+     * @param pageRequest - number of pages and limit per page
      * @return all client's information
      */
     @Override
     @Transactional(readOnly = true)
-    public List<ClientDto> getAll() {
-        var optionalClient = clientRepository.findAll();
+    public List<ClientDto> getAll(final PageRequest pageRequest) {
+        var optionalClient = clientRepository.findAllBy(pageRequest);
         return optionalClient
                 .stream().map(ClientMapper.INSTANCE::map)
                 .collect(Collectors.toList());
