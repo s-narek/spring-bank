@@ -1,24 +1,22 @@
 package com.narek.bank.springbank.model.response;
 
-import com.narek.bank.springbank.model.entity.Account;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
-import java.util.List;
 import java.util.UUID;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
-public class ClientDto extends BaseClientDto {
+public class AccountDto extends BaseAccountDto {
     /**
-     * Client's id.
+     * Account id.
      */
     private final UUID id;
 
     /**
-     * Client's account.
+     * Foreign key.
      */
-    private final List<Account> account;
+    private final UUID clientId;
 }
